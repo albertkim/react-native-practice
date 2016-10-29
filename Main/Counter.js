@@ -29,14 +29,19 @@ export class Counter extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignSelf: 'stretch'
   },
   upperSection: {
-    justifyContent: 'flex-start'
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    borderWidth: 1
   },
   lowerSection: {
-    marginBottom: 50,
+    flex: 1,
+    flexDirection: 'column',
     justifyContent: 'flex-end',
-    alignSelf: 'flex-end'
+    borderWidth: 1
   }
 })

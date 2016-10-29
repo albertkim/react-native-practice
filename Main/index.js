@@ -9,6 +9,7 @@ import {
 import {Container, Header, Content, Button} from 'native-base'
 import Tabs from 'react-native-tabs'
 import {Counter} from './Counter'
+import {Inventory} from './Inventory'
 import {Settings} from './Settings'
 
 export class Main extends React.Component {
@@ -25,6 +26,8 @@ export class Main extends React.Component {
       return <Settings logout={() => this.props.logout()} />
     } else if (this.state.page === 'counter') {
       return <Counter />
+    } else if (this.state.page === 'inventory') {
+      return <Inventory />
     } else {
       return (
         <View>
@@ -45,11 +48,13 @@ export class Main extends React.Component {
         <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
               selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name})}>
           <Text name='counter'>Counter</Text>
-          <Text name='second' selectedIconStyle={{borderTopWidth:2, borderTopColor:'red'}}>Second</Text>
-          <Text name='fourth' selectedStyle={{color:'green'}}>Fourth</Text>
+          <Text name='inventory' selectedIconStyle={{borderTopWidth:2, borderTopColor:'red'}}>Inventory</Text>
+          <Text name='updates' selectedStyle={{color:'green'}}>Updates</Text>
           <Text name='settings' onSelect={() => this.setState({page: 'settings'})}>Settings</Text>
         </Tabs>
-        {this.getContents()}
+        <View style={styles.body}>
+          {this.getContents()}
+        </View>
       </View>
     )
   }
@@ -63,14 +68,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  body: {
+    marginBottom: 50
+  }
 })
